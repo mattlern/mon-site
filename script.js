@@ -34,7 +34,7 @@ buttonsArea.addEventListener("mousemove", (e) => {
   const dy = (btn.top + btn.height / 2) - e.clientY;
   const dist = Math.hypot(dx, dy);
 
-  if (dist < 100) moveNoButton();
+  if (dist < 105) moveNoButton();
 });
 
 // bloquer click au cas où
@@ -45,38 +45,42 @@ noBtn.addEventListener("click", (e) => {
 
 moveNoButton();
 
-// --- Effet “OUI” : fondu + citrons ---
-function spawnLemons(durationMs = 5000) {
+// --- Explosion de citrons pendant 5 secondes ---
+function lemonBurst(durationMs = 5000) {
   const start = Date.now();
-  const interval = setInterval(() => {
-    const elapsed = Date.now() - start;
-    if (elapsed > durationMs) {
-      clearInterval(interval);
+
+  const tick = setInterval(() => {
+    const t = Date.now() - start;
+    if (t > durationMs) {
+      clearInterval(tick);
       return;
     }
 
-    // crée quelques citrons par “tick”
-    for (let i = 0; i < 6; i++) {
+    // quantité par tick (ajuste ici si tu veux + ou -)
+    const count = 10;
+
+    for (let i = 0; i < count; i++) {
       const el = document.createElement("div");
       el.className = "lemon";
       el.textContent = "🍋";
 
+      // position aléatoire dans la fenêtre
       el.style.left = `${Math.random() * 100}vw`;
-      el.style.top = `-40px`;
-      el.style.animationDelay = `${Math.random() * 0.4}s`;
-      el.style.animationDuration = `${4.2 + Math.random() * 1.2}s`;
+      el.style.top = `${Math.random() * 100}vh`;
+
+      // petite variation de durée / délai
+      el.style.animationDuration = `${1.05 + Math.random() * 0.6}s`;
+      el.style.animationDelay = `${Math.random() * 0.12}s`;
 
       lemons.appendChild(el);
 
-      // nettoyage après animation
-      setTimeout(() => el.remove(), 6500);
+      // nettoyage
+      setTimeout(() => el.remove(), 2000);
     }
-  }, 180);
+  }, 160);
 
-  // nettoyage complet au bout du temps
-  setTimeout(() => {
-    lemons.innerHTML = "";
-  }, durationMs + 700);
+  // nettoyage final
+  setTimeout(() => (lemons.innerHTML = ""), durationMs + 250);
 }
 
 yesBtn.addEventListener("click", () => {
@@ -88,15 +92,15 @@ yesBtn.addEventListener("click", () => {
   // fondu sortant
   title.classList.add("fade-out");
 
-  // après le fondu, change le texte et refait un fondu entrant
+  // change le texte après le fondu
   setTimeout(() => {
-    title.textContent = "moi aussi, je te citron de tout le monde de tout l’univers";
+    title.textContent = "Moi aussi, je te citron de tout le monde de tout l’univers.";
     title.classList.remove("fade-out");
   }, 430);
 
-  // option: désactiver le “Non” après oui
+  // option : cacher le Non après oui
   noBtn.style.display = "none";
 
-  // citrons pendant 5 secondes
-  spawnLemons(5000);
+  // explosions de citrons
+  lemonBurst(5000);
 });
