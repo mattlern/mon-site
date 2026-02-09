@@ -3,175 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon Site — Vitrine</title>
-    <meta name="description" content="Site vitrine simple et moderne." />
+    <title>Valentine</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <header class="header" id="top">
-      <div class="container nav">
-        <a class="logo" href="#top">MonSite</a>
+    <main class="wrap">
+      <h1 id="title">Veux-tu être ma valentine ?</h1>
 
-        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
-          ☰
-        </button>
+      <div class="buttons" aria-label="Choix">
+        <button id="yesBtn" class="btn yes" type="button">Oui</button>
 
-        <nav class="menu" aria-label="Navigation principale">
-          <a href="#apropos">À propos</a>
-          <a href="#services">Services</a>
-          <a href="#projets">Projets</a>
-          <a class="btn" href="#contact">Contact</a>
-        </nav>
+        <!-- Le "Non" est positionné absolument pour pouvoir bouger -->
+        <button id="noBtn" class="btn no" type="button">Non</button>
       </div>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="badge">Disponible • Paris</p>
-            <h1>Un site vitrine simple, moderne, et efficace.</h1>
-            <p class="lead">
-              Présente ton activité clairement : qui tu es, ce que tu fais, et comment te contacter.
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn" href="#contact">Me contacter</a>
-              <a class="btn ghost" href="#services">Voir les services</a>
-            </div>
-
-            <div class="stats">
-              <div class="stat">
-                <div class="stat-num">24h</div>
-                <div class="stat-label">Réponse</div>
-              </div>
-              <div class="stat">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Responsive</div>
-              </div>
-              <div class="stat">
-                <div class="stat-num">SEO</div>
-                <div class="stat-label">Basique</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h2>Infos rapides</h2>
-            <ul class="checklist">
-              <li>✅ Design propre</li>
-              <li>✅ Sections faciles à modifier</li>
-              <li>✅ Formulaire prêt (mailto)</li>
-            </ul>
-            <p class="muted">
-              Tu pourras remplacer “MonSite” et le contenu par tes vrais textes.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="apropos">
-        <div class="container">
-          <h2>À propos</h2>
-          <p class="muted">
-            Ici tu expliques en 3–5 lignes qui tu es et ce que tu proposes.
-            Reste simple et concret.
-          </p>
-        </div>
-      </section>
-
-      <section class="section" id="services">
-        <div class="container">
-          <h2>Services</h2>
-
-          <div class="grid">
-            <article class="card">
-              <h3>Service 1</h3>
-              <p class="muted">Une phrase courte pour expliquer.</p>
-            </article>
-            <article class="card">
-              <h3>Service 2</h3>
-              <p class="muted">Un bénéfice client clair.</p>
-            </article>
-            <article class="card">
-              <h3>Service 3</h3>
-              <p class="muted">Ce que tu fais, pour qui, et comment.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="projets">
-        <div class="container">
-          <h2>Projets</h2>
-          <div class="grid">
-            <article class="card">
-              <h3>Projet A</h3>
-              <p class="muted">Description courte du projet et du résultat.</p>
-            </article>
-            <article class="card">
-              <h3>Projet B</h3>
-              <p class="muted">Description courte du projet et du résultat.</p>
-            </article>
-            <article class="card">
-              <h3>Projet C</h3>
-              <p class="muted">Description courte du projet et du résultat.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container">
-          <h2>Contact</h2>
-          <p class="muted">
-            Remplis le formulaire, ou clique sur le bouton pour m’envoyer un mail.
-          </p>
-
-          <div class="contact-grid">
-            <form class="card" id="contactForm">
-              <label>
-                Nom
-                <input name="name" type="text" placeholder="Ton nom" required />
-              </label>
-
-              <label>
-                Email
-                <input name="email" type="email" placeholder="ton@email.com" required />
-              </label>
-
-              <label>
-                Message
-                <textarea name="message" rows="5" placeholder="Ton message..." required></textarea>
-              </label>
-
-              <button class="btn" type="submit">Envoyer</button>
-              <p class="muted small">
-                (Ce formulaire utilise ton application mail via “mailto”.)
-              </p>
-            </form>
-
-            <div class="card">
-              <h3>Coordonnées</h3>
-              <p class="muted">
-                Email : <a href="mailto:contact@monsite.com">contact@monsite.com</a><br />
-                Instagram : <a href="#">@toncompte</a>
-              </p>
-
-              <a class="btn ghost" href="mailto:contact@monsite.com">M’envoyer un email</a>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <p>© <span id="year"></span> MonSite. Tous droits réservés.</p>
-        <a href="#top">Haut ↑</a>
-      </div>
-    </footer>
 
     <script src="script.js"></script>
   </body>
