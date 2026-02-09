@@ -4,18 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Valentine</title>
+
+    <!-- Police manuscrite -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <main class="wrap">
-      <h1 id="title">Veux-tu être ma valentine ?</h1>
+      <div class="card" id="card">
+        <h1 id="title" class="fade-text">Veux-tu être ma valentine ?</h1>
 
-      <div class="buttons" aria-label="Choix">
-        <button id="yesBtn" class="btn yes" type="button">Oui</button>
-
-        <!-- Le "Non" est positionné absolument pour pouvoir bouger -->
-        <button id="noBtn" class="btn no" type="button">Non</button>
+        <div class="buttons" aria-label="Choix">
+          <button id="yesBtn" class="btn yes" type="button">Oui</button>
+          <button id="noBtn" class="btn no" type="button">Non</button>
+        </div>
       </div>
+
+      <!-- zone où on injecte les citrons -->
+      <div id="lemons" aria-hidden="true"></div>
     </main>
 
     <script src="script.js"></script>
