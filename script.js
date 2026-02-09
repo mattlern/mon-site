@@ -1,27 +1,49 @@
-// Année auto
-document.getElementById("year").textContent = new Date().getFullYear();
+const title = document.getElementById("title");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const buttonsArea = document.querySelector(".buttons");
 
-// Menu mobile
-const burger = document.querySelector(".burger");
-const menu = document.querySelector(".menu");
-
-burger?.addEventListener("click", () => {
-  const isOpen = menu.classList.toggle("open");
-  burger.setAttribute("aria-expanded", String(isOpen));
+yesBtn.addEventListener("click", () => {
+  title.textContent = "Moi aussi, je te citerai de tout l'univers, de tout le monde.";
+  // Optionnel: cacher les boutons après le oui
+  // buttonsArea.style.display = "none";
 });
 
-// Formulaire -> ouvre l'app mail (mailto)
-const form = document.getElementById("contactForm");
-form?.addEventListener("submit", (e) => {
+// Empêche le "Non" d'être cliquable (au cas où)
+noBtn.addEventListener("click", (e) => {
   e.preventDefault();
-
-  const data = new FormData(form);
-  const name = data.get("name");
-  const email = data.get("email");
-  const message = data.get("message");
-
-  const subject = encodeURIComponent(`Contact - ${name}`);
-  const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-  window.location.href = `mailto:contact@monsite.com?subject=${subject}&body=${body}`;
+  e.stopPropagation();
 });
+
+// Déplacement aléatoire du bouton "Non" quand la souris s'approche / survole
+function moveNoButton() {
+  const areaRect = buttonsArea.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
+
+  const padding = 10; // marge pour éviter de sortir
+  const maxX = areaRect.width - btnRect.width - padding;
+  const maxY = areaRect.height - btnRect.height - padding;
+
+  const x = Math.max(padding, Math.random() * maxX);
+  const y = Math.max(padding, Math.random() * maxY);
+
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
+
+// Survol direct
+noBtn.addEventListener("mouseenter", moveNoButton);
+
+// "S'approcher" : dès que la souris bouge dans la zone, si elle est proche du bouton -> il fuit
+buttonsArea.addEventListener("mousemove", (e) => {
+  const btn = noBtn.getBoundingClientRect();
+  const dx = (btn.left + btn.width / 2) - e.clientX;
+  const dy = (btn.top + btn.height / 2) - e.clientY;
+  const dist = Math.hypot(dx, dy);
+
+  // distance de déclenchement (augmente si tu veux qu'il fuie plus tôt)
+  if (dist < 90) moveNoButton();
+});
+
+// Placement initial un peu aléatoire
+moveNoButton();
